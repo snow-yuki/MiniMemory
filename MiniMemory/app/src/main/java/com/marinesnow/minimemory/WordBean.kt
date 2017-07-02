@@ -4,7 +4,7 @@ package com.marinesnow.minimemory
  * Created by mei on 2017/7/2.
  */
 data class WordBean(var word : String,var count : Int){
-    constructor():this("?",0)
+    constructor(w : String):this(w,0)
     fun markWrong(){
         count--
     }

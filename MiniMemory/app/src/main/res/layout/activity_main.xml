@@ -9,20 +9,36 @@
     tools:context="com.marinesnow.minimemory.MainActivity">
 
     <EditText
+        android:layout_margin="10dp"
+        android:hint="@string/edithint"
         android:id="@+id/score_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="3"/>
-    <Button
+    <com.marinesnow.minimemory.RrippleView
         android:id="@+id/enter_btn"
         android:text="@string/start"
+        app:backgroung_color="@color/basecolor"
+        app:ripple_color="@color/r2"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
+    <com.marinesnow.minimemory.RrippleView
         android:id="@+id/exit_btn"
+        android:layout_margin="10dp"
+        android:padding="5dp"
         android:text="@string/exit"
+        android:textColor="@color/white"
+        app:backgroung_color="@color/basecolor"
+        app:ripple_color="@color/r2"
+        android:textSize="18sp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

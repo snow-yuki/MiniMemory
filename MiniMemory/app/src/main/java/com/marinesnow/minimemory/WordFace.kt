@@ -13,7 +13,7 @@ class WordFace : AppCompatActivity() {
     private val mHandler by lazy { object : Handler(){
         override fun handleMessage(msg: Message?) {
             when(msg?.what){
-                0 -> printer.setText(current)
+                0 -> printer.setText(BuleString.toTextView(current))
             }
             super.handleMessage(msg)
         }
@@ -27,6 +27,7 @@ class WordFace : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.word_face)
+        initUI()
         extractRes()
         afterClick()
     }
@@ -39,7 +40,10 @@ class WordFace : AppCompatActivity() {
         val buffer : ByteArray = kotlin.ByteArray(size)
         instreams.read(buffer)
         val originString = String(buffer)
-        toast(originString)
+        resList = BuleString.generateList(originString)
+        for(it in resList.indices){
+            println("---it----${resList[it]}")
+        }
     }
 
     fun initUI(){
@@ -66,6 +70,10 @@ class WordFace : AppCompatActivity() {
     }
 
     fun showAnswer(){
+        if(BuleString.notHasStar(current)){
+            return
+        }
+        current = BuleString.removeStar(current)
         mHandler.sendEmptyMessage(0)
     }
 

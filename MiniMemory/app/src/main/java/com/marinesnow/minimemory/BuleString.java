@@ -1,6 +1,5 @@
 package com.marinesnow.minimemory;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +14,7 @@ public class BuleString {
      * @param content
      * @return
      */
-    private  static boolean notHasStar( String content ) {
+    public static boolean notHasStar( String content ) {
         for( int i = 0; i < content.length(); i++ ) {
             char tmp = content.charAt( i );
             if( tmp == '*' ) {
@@ -25,18 +24,9 @@ public class BuleString {
         return true;
     }
 
-    /**
-     * input the path of data file
-     * return the list of BuleData
-     * BuleData contains one string which stores the content and ont integer to record the score
-     *
-     * @param
-     * @return
-     */
-    public static ArrayList<BuleData> generateList( String content ) {
+    public static ArrayList<WordBean> generateList( String content ) {
         try {
-            ArrayList<BuleData> list = new ArrayList<>();
-            byte[] bytes = new byte[2*1024];
+            ArrayList<WordBean> list = new ArrayList<>();
             StringBuilder sb = new StringBuilder();
             for( int i = 0; i < content.length(); i++ ) {
                 char tmp1 = content.charAt( i );
@@ -45,18 +35,20 @@ public class BuleString {
                 }
                 if( tmp1 >= '0' && tmp1 <= '9' ) {
                     i += 2;
-                    list.add( new BuleData( sb.toString(), 0 ) );
+                    list.add( new WordBean( sb.toString()) );
                     sb = new StringBuilder();
                 } else {
                     sb.append( tmp1 );
                 }
             }
+            /*
             for( int i = 0; i < list.size(); i++ ) {
-                BuleData buleData = list.get( i );
-                if( notHasStar( buleData.content ) ) {
+                WordBean buleData = list.get( i );
+                if( notHasStar( buleData.getWord() ) ) {
                     list.remove( i );
                 }
             }
+            */
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,18 +65,19 @@ public class BuleString {
      */
     public static String toTextView( String content ) {
         boolean flag = true;
-        String replace = "_____";
+        String replace = "＿";
         StringBuilder sb = new StringBuilder();
         for( int i = 0; i < content.length(); i++ ) {
             char c = content.charAt( i );
             if( c == '*' ) {
                 i++;
                 flag = !flag;
-                sb.append( replace );
                 continue;
             }
             if( flag ) {
                 sb.append( c );
+            } else {
+                sb.append( replace );
             }
         }
         return sb.toString();
@@ -114,11 +107,5 @@ public class BuleString {
             }
         }
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        String path = "e:/list.txt";
-        String content = "**德**是人才素质的灵魂。**智**是人才素质的基本内容。**体**是人才素质的基础。**美**是人才素质的综合体现。";
-        System.out.println(BuleString.removeStar(BuleString.removeStar( content )));
     }
 }

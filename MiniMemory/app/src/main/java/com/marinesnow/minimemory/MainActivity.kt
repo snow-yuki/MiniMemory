@@ -7,13 +7,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
-
+    val sh by lazy { storehelp(this) }
+    var scores = 3
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if(!sh.con(ShareWord.right_score)){
+            sh.put(ShareWord.right_score,3)
+        }
+        scores = sh.getInt(ShareWord.right_score)
+        score_edit.setText(scores.toString())
         enter_btn.setOnClickListener {
-            val scoreText = score_edit.text.toString()
-            if(scoreText == null||scoreText.equals("")){
+            val scoreText= score_edit.text.toString()
+            if(scoreText.equals("")){
                 toast(getString(R.string.puzzle_string))
             }else{
                 var scores = score_edit.text.toString().toInt()
@@ -25,6 +31,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         exit_btn.setOnClickListener { finish() }
-
     }
 }
