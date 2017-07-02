@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
                 storehelp(this).put(ShareWord.right_score,scores);
                 val intent = Intent(this,WordFace::class.java)
                 startActivity(intent)
+                this.finish()
             }
         }
         exit_btn.setOnClickListener { finish() }

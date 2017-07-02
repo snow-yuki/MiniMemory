@@ -7,6 +7,13 @@
     android:id="@+id/relative_face">
 
     <TextView
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/rest_word"
+        android:text="0 words left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
         android:layout_margin="10dp"
         android:id="@+id/printer"
         android:layout_width="match_parent"

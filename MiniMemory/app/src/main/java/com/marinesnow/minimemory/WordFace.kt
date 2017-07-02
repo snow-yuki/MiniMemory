@@ -1,9 +1,11 @@
 package com.marinesnow.minimemory
 
+import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.support.v7.app.AlertDialog
 import kotlinx.android.synthetic.main.word_face.*
 import org.jetbrains.anko.toast
 
@@ -41,9 +43,6 @@ class WordFace : AppCompatActivity() {
         instreams.read(buffer)
         val originString = String(buffer)
         resList = BuleString.generateList(originString)
-        for(it in resList.indices){
-            println("---it----${resList[it]}")
-        }
     }
 
     fun initUI(){
@@ -51,7 +50,7 @@ class WordFace : AppCompatActivity() {
         printer.setOnClickListener {showAnswer()}
 
         right_btn.setOnClickListener {
-            if(!resList[cur].add(3)){
+            if(!resList[cur].add(rightScore)){
                 resList.removeAt(cur)
             }else cur++
             afterClick()
@@ -78,8 +77,17 @@ class WordFace : AppCompatActivity() {
     }
 
     fun afterClick(){
-        cur = cur%resList.size
-        current = resList[cur].word
-        mHandler.sendEmptyMessage(0)
+        if(resList.size <= 0){
+            AlertDialog.Builder(this)
+                    .setTitle("Congratulation")
+                    .setCancelable(false)
+                    .setMessage("you have finish reciting")
+                    .setPositiveButton("o(>ω<)o", { dialogInterface, i -> finish() }).show()
+        }else{
+            rest_word.setText("${resList.size} words left")
+            cur = cur%resList.size
+            current = resList[cur].word
+            mHandler.sendEmptyMessage(0)
+        }
     }
 }

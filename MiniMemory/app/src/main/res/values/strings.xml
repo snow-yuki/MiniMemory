@@ -5,6 +5,6 @@
     <string name="wrong">×</string>
     <string name="right">√</string>
     <string name="puzzle">o</string>
-    <string name="puzzle_string">表示无法理解</string>
+    <string name="puzzle_string">请设置正确的复习周期！！</string>
     <string name="edithint">复习周期：范围1-10</string>
 </resources>

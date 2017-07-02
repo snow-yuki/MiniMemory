@@ -13,8 +13,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Button;
-import android.widget.EditText;
-
 
 /**
  * Created by mei on 2017/4/8.
@@ -66,7 +64,7 @@ public class RrippleView extends Button{
         ripplePaint.setAlpha(calpha);
         rect = new RectF(0,0,width,height);
         Path path = new Path();
-        path.addRoundRect(rect,30f,30f, Path.Direction.CW);
+        path.addRoundRect(rect,24f,24f, Path.Direction.CW);
 
         canvas.clipPath(path);
         canvas.drawColor(backgroungColor);
@@ -115,7 +113,6 @@ public class RrippleView extends Button{
         touchx = rawX - getX();
         touchy = rawY - getY();
         prepareA();
-        EditText editText;
     }
 
     class rippleUpdater implements ValueAnimator.AnimatorUpdateListener
