@@ -41,14 +41,12 @@ public class BuleString {
                     sb.append( tmp1 );
                 }
             }
-            /*
             for( int i = 0; i < list.size(); i++ ) {
                 WordBean buleData = list.get( i );
                 if( notHasStar( buleData.getWord() ) ) {
                     list.remove( i );
                 }
             }
-            */
             return list;
         } catch (Exception e) {
             e.printStackTrace();
