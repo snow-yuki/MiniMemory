@@ -21,6 +21,8 @@ class WordFace : AppCompatActivity() {
 
     var cur = 0
     var current = ""
+    var rightScore = 3;
+    val sh by lazy { storehelp(this) }
     lateinit var resList : ArrayList<WordBean>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,8 @@ class WordFace : AppCompatActivity() {
     }
 
     fun extractRes(){
+        rightScore = sh.getInt(ShareWord.right_score);
+
         val instreams = assets.open("res.txt")
         val size = instreams.available()
         val buffer : ByteArray = kotlin.ByteArray(size)
@@ -39,6 +43,9 @@ class WordFace : AppCompatActivity() {
     }
 
     fun initUI(){
+        relative_face.setOnClickListener {showAnswer()}
+        printer.setOnClickListener {showAnswer()}
+
         right_btn.setOnClickListener {
             if(!resList[cur].add(3)){
                 resList.removeAt(cur)
@@ -56,9 +63,10 @@ class WordFace : AppCompatActivity() {
             }else cur++
             afterClick()
         }
-        printer.setOnClickListener {
-            
-        }
+    }
+
+    fun showAnswer(){
+        mHandler.sendEmptyMessage(0)
     }
 
     fun afterClick(){

@@ -8,6 +8,12 @@
     android:gravity="center"
     tools:context="com.marinesnow.minimemory.MainActivity">
 
+    <EditText
+        android:id="@+id/score_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="3"/>
     <Button
         android:id="@+id/enter_btn"
         android:text="@string/start"
