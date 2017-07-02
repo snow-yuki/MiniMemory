@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:text="3"/>
+        android:text=""/>
     <com.marinesnow.minimemory.RrippleView
         android:id="@+id/enter_btn"
         android:text="@string/start"
