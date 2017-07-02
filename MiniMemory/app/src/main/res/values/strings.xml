@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MiniMemory</string>
+    <string name="start">Start</string>
+    <string name="exit">Exit</string>
+    <string name="wrong">×</string>
+    <string name="right">√</string>
+    <string name="puzzle">o</string>
 </resources>
